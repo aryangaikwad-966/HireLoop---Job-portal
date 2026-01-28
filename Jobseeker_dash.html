@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HireLoop.com - Job Seeker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { 
+      background-color: #f8f9fa; 
+      font-family: 'Poppins', sans-serif;
+      padding-top: 56px;
+      margin: 0;
+    }
+
+    /* Layout */
+    .wrapper { display: flex; min-height: 100vh; flex-direction: column; }
+    .main-wrapper { display: flex; flex: 1; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: #212529;
+      color: white;
+      flex-shrink: 0;
+      padding-top: 1rem;
+      min-height: calc(100vh - 56px); /* leave navbar height */
+    }
+    .sidebar a {
+      color: #adb5bd;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+    .sidebar a:hover { color: #fff; background: #343a40; }
+
+    /* Main content */
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #000;
+      transition: .35s;
+      padding: .9rem 0;
+    }
+    .navbar.scrolled { background: rgba(0,0,0,.9); box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .navbar-brand { font-weight: 800; font-size: 1.25rem; }
+    .logo-dot { width: 12px; height: 12px; border-radius: 50%; background: #0f9d58; display: inline-block; }
+    .nav-link { color: #d1d5db !important; font-weight: 600; }
+    .nav-link:hover { color: #fff !important; }
+
+    /* Profile completion bar */
+    .profile-completion { height: 20px; background: #dee2e6; border-radius: 10px; }
+    .profile-completion .progress-bar { border-radius: 10px; }
+
+    /* Footer */
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 0;
+      width: 100%;
+      margin-top: auto;
+    }
+    footer .footer-link { color: #aaa; }
+    footer .footer-link:hover { color: #fff; }
+
+    .dark-mode { background-color: #1e1e1e !important; color: #f1f1f1; }
+
+    @media (max-width: 768px) {
+      .sidebar { width: 100%; min-height: auto; }
+      .main-wrapper { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand text-white fw-bold" href="#"><span class="logo-dot"></span> HireLoop<span style="color:#0f9d58;">.com</span></a>
+      <div class="mx-auto">
+        <span class="navbar-text text-white fw-semibold" style="font-size: 1.3rem; padding-left: 200px;">Job Seeker</span>
+      </div>
+      <ul class="navbar-nav ms-auto flex-row align-items-center">
+        <li class="nav-item me-3"><button class="btn btn-dark" id="notifBtn"><i class="fas fa-bell"></i><span class="badge bg-danger" id="notifCount">3</span></button></li>
+        <li class="nav-item me-3"><button class="btn btn-dark" id="darkModeToggle"><i class="fas fa-moon"></i></button></li>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-circle"></i></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="wrapper">
+    <div class="main-wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar p-3">
+        <h5 class="text-white mb-4">Seeker Panel</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-search"></i> Search Jobs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-heart"></i> Saved Jobs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-line"></i> Application Tracker</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume_builder.html"><i class="fas fa-file-alt"></i> Resume Builder</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+      </div>
+
+      <!-- Main content -->
+      <main class="content">
+        <div class="container-fluid">
+          <h2 class="mb-4">Welcome, Aryan! Let’s get you hired.</h2>
+
+          <!-- Resume Upload -->
+          <div class="card mb-4">
+            <div class="card-header">Resume Upload</div>
+            <div class="card-body d-flex flex-column flex-md-row align-items-center justify-content-between">
+              <input type="file" id="resumeFile" class="form-control mb-2 mb-md-0 me-md-2" style="max-width: 300px;" accept=".pdf,.doc,.docx">
+              <button class="btn btn-success" onclick="uploadResume()"><i class="fas fa-upload"></i> Upload</button>
+            </div>
+            <div class="card-footer small text-muted" id="resumeStatus">No resume uploaded yet.</div>
+          </div>
+
+          <!-- Job Search -->
+          <div class="card mb-4">
+            <div class="card-header">Search Jobs</div>
+            <div class="card-body">
+              <form class="row g-3" id="jobSearchForm">
+                <div class="col-md-3"><input type="text" id="searchLocation" class="form-control" placeholder="Location"></div>
+                <div class="col-md-3"><input type="text" id="searchRole" class="form-control" placeholder="Role"></div>
+                <div class="col-md-2"><input type="range" id="salaryRange" class="form-range" min="0" max="100"><small>Salary: <span id="salaryValue">0</span>LPA</small></div>
+                <div class="col-md-2"><input type="range" id="expRange" class="form-range" min="0" max="100"><small>Exp: <span id="expValue">0</span> yrs</small></div>
+                <div class="col-md-2"><button type="submit" class="btn btn-success w-100"><i class="fas fa-search"></i> Search</button></div>
+              </form>
+              <div id="searchResults" class="mt-3"></div>
+            </div>
+          </div>
+
+          <!-- Saved Jobs -->
+          <div class="card mb-4">
+            <div class="card-header">Saved Jobs</div>
+            <div class="card-body row" id="savedJobs"></div>
+          </div>
+
+          <!-- Application Tracker -->
+          <div class="card mb-4">
+            <div class="card-header">Application Tracker</div>
+            <div class="card-body">
+              <ul class="list-group" id="trackerList">
+                <li class="list-group-item d-flex justify-content-between draggable" draggable="true">
+                  Frontend Intern at Zoho <span class="badge bg-primary">Interview Scheduled</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between draggable" draggable="true">
+                  Backend Dev at TCS <span class="badge bg-warning">Under Review</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Profile Builder -->
+          <div class="card mb-4">
+            <div class="card-header">Profile Builder</div>
+            <div class="card-body">
+              <p>Profile Completion:</p>
+              <div class="profile-completion mb-3"><div class="progress-bar bg-success" id="profileProgress" style="width: 70%;"></div></div>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#profileModal">Edit Profile</button>
+            </div>
+          </div>
+
+          <!-- Job Alerts -->
+          <div class="card mb-4">
+            <div class="card-header">Job Alerts</div>
+            <div class="card-body">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="alertsToggle" checked>
+                <label class="form-check-label" for="alertsToggle">Enable Email Alerts</label>
+              </div>
+              <input type="text" id="alertKeywords" class="form-control mt-2" placeholder="Keyword Alerts (e.g. Python, Remote)">
+            </div>
+          </div>
+
+          <!-- Profile Analytics -->
+          <div class="card mb-4">
+            <div class="card-header">Profile Analytics</div>
+            <div class="card-body row text-center">
+              <div class="col-md-4">
+                <h5>Profile Views</h5>
+                <p class="display-6 text-primary" id="profileViews">128</p>
+              </div>
+              <div class="col-md-4">
+                <h5>Search Appearances</h5>
+                <p class="display-6 text-success" id="searchAppearances">54</p>
+              </div>
+              <div class="col-md-4">
+                <h5>Recruiter Messages</h5>
+                <p class="display-6 text-warning" id="recruiterMsgs">12</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4">
+      <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div class="d-flex align-items-center gap-2 text-white-50">
+          <span class="logo-dot"></span><span class="fw-bold">HireLoop<span style="color:#0f9d58">.com</span></span>
+        </div>
+        <div>
+          <a href="#" class="footer-link text-white-50 me-3">About</a>
+          <a href="#" class="footer-link text-white-50 me-3">Contact</a>
+          <a href="#" class="footer-link text-white-50 me-3">Privacy Policy</a>
+          <a href="#" class="footer-link text-white-50">Terms</a>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <a class="text-white-50" href="#"><i class="fab fa-facebook"></i></a>
+          <a class="text-white-50" href="#"><i class="fab fa-x-twitter"></i></a>
+          <a class="text-white-50" href="#"><i class="fab fa-linkedin"></i></a>
+          <a class="text-white-50" href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="text-center text-white-50 mt-3 small">© 2025 HireLoop.com</div>
+    </footer>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Edit Profile</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="text" id="profileName" class="form-control mb-2" placeholder="Full Name">
+        <input type="text" id="profileExp" class="form-control mb-2" placeholder="Work Experience">
+        <input type="text" id="profileSkills" class="form-control mb-2" placeholder="Skills (comma separated)">
+      </div>
+      <div class="modal-footer"><button class="btn btn-primary" id="saveProfile">Save</button></div>
+    </div></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="jobseeker.js"></script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HireLoop.com</title>
+
+  <!-- =========================
+       Fonts & CSS Libraries
+       ========================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- =========================
+       Loader Overlay
+       ========================= -->
+  <div id="loader-overlay">
+    <div class="loader-logo">
+      <span class="logo-dot"></span>
+      <span class="logo-text fw-bold">HireLoop<span style="color:var(--brand)">.com</span></span>
+    </div>
+  </div>
+
+  <!-- =========================
+       Navbar
+       ========================= -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-white" href="#"><span class="logo-dot"></span> HireLoop<span style="color:var(--brand)">.com</span></a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link"  data-bs-toggle="modal" data-bs-target="#loginseeker">Job Seeker</a></li>
+          <li class="nav-item"><a class="nav-link"data-bs-toggle="modal" data-bs-target="#loginrecruiter">Job Recruiter</a></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginadmin">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================
+       Hero Section
+       ========================= -->
+  <header id="home" class="hero">
+    <div class="container hero-content">
+      <h1 class="headline">Find Your Dream Job or Hire the Best Talent</h1>
+      <p class="subhead mt-3">Choose your role below to get started. Simple, fast, and modern.</p>
+      <div class="mt-4">
+        <a href="#roles" class="btn btn-glow">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       Role Cards Section
+       ========================= -->
+  <section id="roles">
+    <div class="container">
+      <h2 class="section-title mb-4">Choose Your Role</h2>
+      <div class="row g-4">
+        <!-- Job Seeker Card -->
+        <div class="col-md-4">
+          <div class="role-card">
+            <div class="d-flex gap-3">
+              <div class="role-icon"><i class="fa-solid fa-user"></i></div>
+              <h5 style="padding-top: 15px;">Job Seeker</h5>
+            </div>
+            <p class="muted mt-3">Create profile, search roles, and track applications.</p>
+            <button class="btn btn-soft w-100" data-bs-toggle="modal" data-bs-target="#loginseeker" >Login as Job Seeker</button>
+          </div>
+        </div>
+        <!-- Recruiter Card -->
+        <div class="col-md-4">
+          <div class="role-card">
+            <div class="d-flex gap-3">
+              <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
+              <h5 style="padding-top: 15px;">Recruiter</h5>
+            </div>
+            <p class="muted mt-3">Post jobs, search candidates, and manage hiring.</p>
+            <button class="btn btn-soft w-100" data-bs-toggle="modal" data-bs-target="#loginrecruiter">Login as Job Recruiter</button>
+          </div>
+        </div>
+        <!-- Admin Card -->
+        <div class="col-md-4">
+          <div class="role-card">
+            <div class="d-flex gap-3">
+              <div class="role-icon"><i class="fa-solid fa-shield"></i></div>
+              <h5 style="padding-top: 15px;">Admin</h5>
+            </div>
+            <p class="muted mt-3">Manage platform settings, analytics, and users.</p>
+            <button class="btn btn-soft w-100" data-bs-toggle="modal" data-bs-target="#loginadmin" >Login as Admin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       Why Choose Section
+       ========================= -->
+  <section>
+    <div class="container">
+      <h2 class="section-title mb-4">Why Choose HireLoop?</h2>
+      <div class="row g-4">
+        <div class="col-md-3"><div class="feature"><i class="fa-solid fa-rocket"></i> <h6>Fast</h6><p class="muted">Optimized for speed.</p></div></div>
+        <div class="col-md-3"><div class="feature"><i class="fa-solid fa-wand-magic-sparkles"></i> <h6>AI Assisted</h6><p class="muted">Smart matches & ranking.</p></div></div>
+        <div class="col-md-3"><div class="feature"><i class="fa-solid fa-lock"></i> <h6>Secure</h6><p class="muted">Privacy-first architecture.</p></div></div>
+        <div class="col-md-3"><div class="feature"><i class="fa-solid fa-chart-line"></i> <h6>Insights</h6><p class="muted">Real-time dashboards.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       Testimonials Section
+       ========================= -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-title mb-4">Loved by Candidates & Recruiters</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Testimonial 1 -->
+          <div class="carousel-item active" data-bs-interval="4500">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-10 col-lg-8">
+                <div class="testimonial-card d-flex gap-3 align-items-start">
+                  <img class="avatar" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=200&auto=format&fit=crop" alt="User avatar" />
+                  <div>
+                    <p class="mb-2">“HireLoop.com helped me land a full‑stack role in two weeks. The recommendations were spot‑on and the application tracker kept me focused.”</p>
+                    <div class="small text-uppercase fw-bold" style="letter-spacing:.6px">Aarav Sharma — Job Seeker</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="carousel-item" data-bs-interval="4500">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-10 col-lg-8">
+                <div class="testimonial-card d-flex gap-3 align-items-start">
+                  <img class="avatar" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=200&auto=format&fit=crop" alt="User avatar" />
+                  <div>
+                    <p class="mb-2">“Posting roles is unbelievably fast. Our team loved the collaborative shortlist and analytics.”</p>
+                    <div class="small text-uppercase fw-bold" style="letter-spacing:.6px">Neha Patel — Recruiter</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="carousel-item" data-bs-interval="4500">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-10 col-lg-8">
+                <div class="testimonial-card d-flex gap-3 align-items-start">
+                  <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="User avatar" />
+                  <div>
+                    <p class="mb-2">“The admin tools are clean and powerful.”</p>
+                    <div class="small text-uppercase fw-bold" style="letter-spacing:.6px">Rahul Verma — Platform Admin</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       Footer
+       ========================= -->
+  <footer class="py-4 mt-4">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div class="d-flex align-items-center gap-2 text-white-50">
+        <span class="logo-dot"></span><span class="fw-bold">HireLoop<span style="color:var(--brand)">.com</span></span>
+      </div>
+      <div>
+        <a href="#" class="footer-link" >About</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a class="text-white-50" href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a class="text-white-50" href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a class="text-white-50" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a class="text-white-50" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="text-center text-white-50 mt-3 small">© 2025 HireLoop.com</div>
+  </footer>
+
+  <!-- =========================
+       Sign Up Modal
+       ========================= -->
+  <div class="modal fade" id="signupModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="navbar-brand text-white" href="#" style="padding-bottom: 30px;"><span class="logo-dot"></span> HireLoop<span style="color:var(--brand)">.com</span></a>
+          <h5 class="modal-title" style="padding-top: 50px; padding-left: 30px;">Sign Up</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <h2>Create an Account</h2>
+            <form action="login.html" method="get">
+              <input type="text" name="fullname" placeholder="Full Name" required />
+              <input type="email" name="email" placeholder="Email" required />
+              <input type="password" name="password" placeholder="Password" required />
+              <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+              <select name="role" required>
+                <option value="">Select Role</option>
+                <option value="jobseeker">Job Seeker</option>
+                <option value="recruiter">Recruiter</option>
+                <option value="admin">Admin</option>
+              </select>
+              <button type="submit">Sign Up</button>
+            </form>
+            <div class="login-link">
+              Already have an account? <a href="#roles">Login here</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       Login Modals
+       ========================= -->
+
+  <!-- Job Seeker Login Modal -->
+  <div class="modal fade" id="loginseeker" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="navbar-brand text-white" href="#" style="padding-bottom: 30px;"><span class="logo-dot"></span> HireLoop<span style="color:var(--brand)">.com</span></a>
+          <h5 class="modal-title" style="padding-top: 50px;">Login as Seeker</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-brand w-100" style="color: #000;" onclick="loginseeker(event)">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recruiter Login Modal -->
+  <div class="modal fade" id="loginrecruiter" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="navbar-brand text-white" href="#" style="padding-bottom: 30px;"><span class="logo-dot"></span> HireLoop<span style="color:var(--brand)">.com</span></a>
+          <h5 class="modal-title" style="padding-top: 50px; ">Login as Recruiter</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-brand w-100" style="color: #000;" onclick="loginrecruiter(event)">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal fade" id="loginadmin" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a class="navbar-brand text-white" href="#" style="padding-bottom: 30px;"><span class="logo-dot"></span> HireLoop<span style="color:var(--brand)">.com</span></a>
+          <h5 class="modal-title" style="padding-top: 50px; padding-left: 30px;">Admin</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-brand w-100" style="color: #000;" onclick="loginadmin(event)">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       Scripts & Toast Notification
+       ========================= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Toast Notification -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="loginToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMsg">
+          <!-- Message will be set by JS -->
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
