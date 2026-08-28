@@ -2,7 +2,7 @@
 
 // Store job listings (in real app -> from DB)
 let jobs = [
-  { title: "Frontend Developer", status: "Live", applicants: 12 },
+  { title: "Full Stack Developer", status: "Live", applicants: 12 },
   { title: "UI/UX Designer", status: "Paused", applicants: 5 }
 ];
 
