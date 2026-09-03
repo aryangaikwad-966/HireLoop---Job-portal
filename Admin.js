@@ -39,7 +39,7 @@ document.getElementById("allowRegistration").addEventListener("change", function
   if (!this.checked) {
     addLog("❌ User registration has been disabled");
   } else {
-    addLog("✅ User registration benabled");
+    addLog("✅ User registration has been enabled");
   }
 });
 //dark mode
