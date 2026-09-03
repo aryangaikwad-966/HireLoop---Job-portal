@@ -37,9 +37,9 @@ document.getElementById("maintenanceMode").addEventListener("change", function (
 // Handle Registration toggle
 document.getElementById("allowRegistration").addEventListener("change", function () {
   if (!this.checked) {
-    addLog("❌ User registration disabled");
+    addLog("❌ User registration has been disabled");
   } else {
-    addLog("✅ User registration enabled");
+    addLog("✅ User registration benabled");
   }
 });
 //dark mode
